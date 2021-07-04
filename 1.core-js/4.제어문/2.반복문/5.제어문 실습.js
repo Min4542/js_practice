@@ -19,3 +19,17 @@
 4 x 8 = 32
 4 x 9 = 36
 */
+
+var ranNum = Math.floor(Math.random() * (9 - 2)) + 2;
+var nW = 1;
+
+
+while (nW <= 9) {
+        console.log(`${ranNum} * ${nW}=${ranNum * nW}`);
+        nW++;
+}
+
+for (var nF = 1; nF <= 9; nF++) {
+        console.log(`${ranNum} * ${nF}=${ranNum * nF}`);
+
+}
