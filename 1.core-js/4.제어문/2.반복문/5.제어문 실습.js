@@ -20,16 +20,32 @@
 4 x 9 = 36
 */
 
-var ranNum = Math.floor(Math.random() * (9 - 2)) + 2;
+
+
+
+var printText='';
+var ranNum = Math.floor(Math.random() * 8) + 2;
 var nW = 1;
 
 
+
+
+printText+=`====================\n`
+printText+=`랜덤 구구단 ${ranNum}단\n`
+printText+=`====================\n`
+// console.log('====================');
+// console.log(`  랜덤 구구단 ${ranNum}단`);
+// console.log('====================');
+
+console.log('while문');
 while (nW <= 9) {
-        console.log(`${ranNum} * ${nW}=${ranNum * nW}`);
+        // console.log(`${ranNum} X ${nW}=${ranNum * nW}`);
+        printText+=`${ranNum} X ${nW}=${ranNum * nW}\n`
         nW++;
 }
-
+alert(printText);
+console.log('for문');
 for (var nF = 1; nF <= 9; nF++) {
-        console.log(`${ranNum} * ${nF}=${ranNum * nF}`);
+        console.log(`${ranNum} X ${nF}=${ranNum * nF}`);
 
 }
