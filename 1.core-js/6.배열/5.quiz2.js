@@ -11,45 +11,48 @@
 */
 
 //사용자가 입력한 숫자들을 저장할 배열
-// var numbers = [];
+var numbers = [];
 
 
-// var total = 0;
-// var input = 0;
-// while (true) {
+var total = 0;
+var input = 0;
+while (true) {
 
 
-//     var input = prompt('숫자를 입력하세요');
+    var input = prompt('숫자를 입력하세요');
+    
 
-//     if (input === '그만') break;
+    if (input === '그만') break;
 
-//     numbers.push(input);
-//     for (num1 of numbers) {
-//         total += num1;
-//     }
-// }
-// alert(`총합:${total}`)
+    numbers.push(+input);
+
+    
+    for (var num1 of numbers) {
+        total += num1;
+    }
+}
+alert(`총합:${total}`)
 
 
 // 선생님
 // 사용자가 입력한 숫자들을 저장할 배열
-var numbers = [];
+// var numbers = [];
 
 
-while (true) {
-    //사용자 입력값
-    var inputData = prompt('숫자를 입력하세요.\n그만 두려면 `그만`이라고 입력하세요');
+// while (true) {
+//     //사용자 입력값
+//     var inputData = prompt('숫자를 입력하세요.\n그만 두려면 `그만`이라고 입력하세요');
 
-    if(inputData === '그만') break;
+//     if(inputData === '그만') break;
 
-    //배열에 입력데이터 삽입
-    numbers.push(+inputData);
+//     //배열에 입력데이터 삽입
+//     numbers.push(+inputData);
 
-}
+// }
 
-var total=0;
-for(var num of numbers ){
-    total+=num;
-}
+// var total=0;
+// for(var num of numbers ){
+//     total+=num;
+// }
 
-alert(`입력한 숫자 총합: ${total}`);
+// alert(`입력한 숫자 총합: ${total}`);
