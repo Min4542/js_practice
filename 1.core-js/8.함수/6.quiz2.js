@@ -1,3 +1,19 @@
+function calcDivisor(numbers) {
+  var numCount = 0;
+  var numArray = [];
+  for (var i = 1; i <= numbers; i++) {
+    if (numbers % i === 0) {
+      numCount++;
+      numArray.push(i);
+    }
+  }
+  console.log(numArray);
+  return numCount;
+}
+
+
+
+
 /* 
 Q. n의 약수의 개수를 구하기
 1. 정수 n을 전달받아 n의 약수들을 출력하고 
