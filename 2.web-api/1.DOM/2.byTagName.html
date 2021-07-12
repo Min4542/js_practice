@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <ul id="fruits">
+        <li id="apple">사과</li>
+        <li id="banana">바나나</li>
+        <li id="grape">포도</li>
+        <li id="pineapple">파인애플</li>
+    </ul>
+    <ul>
+        <li>치즈</li>
+        <li>양파</li>
+    </ul>
+    <script>
+        //유사 배열
+        //객체 형태지만 key가 인덱스처럼 순차적 숫자로 구성되고 
+        //length프로퍼티를 가진 배열과 비슷한 형태의 객체
+        const arr = {
+            0: 'a',
+            1: 'b',
+            2: 'c',
+            length: 3,
+            name: '유사배열'
+        };
+
+        console.log(arr[1]);
+        console.log(arr.length);
+        // arr.push('d');
+        console.log(arr);
+
+        console.log('==================================');
+
+
+        const $fruits = document.getElementById('fruits');
+        const $elements = $fruits.getElementsByTagName('li');//안쓸거
+        console.log($elements);
+
+        $fruits[1].style.color = 'yellow';
+        $fruits.banana.style.background = 'yellowgreen'
+
+        for(let i=0; i<$elements.length;i++){
+            $elements[i].style.fontSize = '30px';
+        }
+
+        for(let e of $elements){
+            e.style.fontSize='italic';
+        }
+
+    </script>
+
+</body>
+
+</html>

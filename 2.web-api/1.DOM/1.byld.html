@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <ul>
+        <li id="apple">사과</li>
+        <li id="banana">바나나</li>
+        <li id="grape">포도</li>
+        <li id="pineapple">파인애플</li>
+    </ul>
+    <script>
+        //console.log(document.body);
+
+        //관례적으로 노드변수의 이름 앞에 $를 붙입니다.
+        const $apple = document.getElementById('apple');
+        console.log($apple.textContent);
+        $apple.textContent = '메롱';
+        $apple.attributes[0].value = 'ap';
+        $apple.style.fontSize = '30px';
+
+        document.body.style.background = 'tomato';
+
+        //없는 아이디로 노드를 취득하면?null이 반환된다,
+        const $elem = document.getElementById('peach');
+        console.log($elem);
+
+        //요소에 id를 부여하면 자동으로 아이디이름의 전역변수가 생성됨.
+        banana.style.color = 'yellow'; //이러면 안된다.
+
+        //아이디와 동일한 이름의 변수를 선언하면 자동으로 전역변수는 취소된다.
+        const grape = '포도 넘 조아';
+        grape.style.color = 'violet'
+    </script>
+
+</body>
+
+</html>
