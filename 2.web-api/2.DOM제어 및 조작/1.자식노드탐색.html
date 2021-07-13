@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="fruits">
+        <li class="apple">Apple</li>
+        <li class="banana">Banana</li>
+        <li class="grpae">Grape</li>
+    </ul>
+
+    <div class="test">
+
+    </div>
+
+    <script>
+
+        //노드탐새의 기점이 되는 요소 취득
+        const $fruits =document.getElementById('fruits');
+        console.log($fruits);
+
+        //기준노드의 모든 자식노드를 탐색, 텍스트도 포함
+        const childNodes = $fruits.childNodes;
+        console.log(childNodes);
+        
+
+        //기준노드의 모든 자식노드를 탐색, 텍스트노드 제외
+        const children = $fruits.children;
+        console.log(children);
+
+        //기준노드의 첫번째 자식 노드를 탐색
+        // console.log($fruits.firstChild);
+        console.log($fruits.firstElementChild);//이거 써야함
+
+        //기준노드의 마지막 자식 노드를 탐색
+        // console.log($fruits.lastChild);
+        console.log($fruits.lastElementChild);//이거 써야함
+
+        //기준 노드의 자식 노드 존재 여부 확인
+        //hasChildNodes()는 공백텍스트 존재시 true가 나옴에 주의 
+        const $testDiv=document.querySelector('.test');
+        console.log($testDiv.hasChildNodes()); 
+
+        //텍스트 노드를 제외한 자식 요소노드의 존재 유무 확인
+        console.log(!!$testDiv.children.length); 
+
+
+    </script>
+</body>
+
+</html>

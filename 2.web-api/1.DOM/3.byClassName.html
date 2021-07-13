@@ -11,21 +11,19 @@
 <body>
 
     <ul id="fruits">
-        <li class="fruits apple">사과</li>
-        <li class="fruits banana">바나나</li>
-        <li class="fruits grape">포도</li>
-        <li class="fruits pineapple">파인애플</li>
+        <li class="fruit apple">사과</li>
+        <li class="fruit banana">바나나</li>
+        <li class="fruit grape">포도</li>
+        <li class="fruit pineapple">파인애플</li>
     </ul>
     
     <script>
         
-        const $elements = document.getElementsByClassName('fruits');
+        const $elements = document.getElementsByClassName('fruit');
         console.log($elements);
 
         const $banana = document.getElementsByName('banana');
-        $banana[0].style.color = 'yellow';
-        $banana[0].style.color = 'yellow';
-
+        $banana[1].style.color='yellow';
     </script>
 
 </body>

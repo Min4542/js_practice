@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<div class="wrap">
+    <ul id="fruits">
+        <li>Apple</li>
+        <li>Banana</li>
+        <li>Grpae</li>
+    </ul>
+</div>
+
+<table id="board">
+    <tr>
+        <td>A</td>
+        <td>B</td>
+    </tr>
+    <tr>
+        <td>C</td>
+        <td>D</td>
+    </tr>
+</table>
+
+<script>
+
+const $banana = document.querySelector('#fruits > li:nth-child(2)');
+
+//부모노드 탐색
+const parent =$banana.parentNode;
+console.log(parent);
+
+const ancient = $banana.parentNode.parentNode;
+console.log(ancient);
+
+//다음 형제노드 탐색
+const next = $banana.nextElementSibling;
+console.log(next);
+
+//이전 형제노드 탐색
+const prev = $banana.previousElementSibling;
+console.log(prev);
+
+const prev2=next.previousElementSibling;
+console.log($banana===prev2);
+
+//테이블 요소노드 취득 
+const $board = document.getElementById('board');
+//table태그는 아래에 자동으로 tbody태그가 삽입됨.
+const child=$board.children;
+console.log(child);
+
+const trList=$board.firstElementChild.children;
+console.log(trList);
+</script>
+
+</body>
+</html>
