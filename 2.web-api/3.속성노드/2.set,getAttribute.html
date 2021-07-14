@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="email" id="account" value="acv123@naver.com">
+
+    <script>
+        const $input = document.querySelector('input');
+        
+        //input태그의 value속성 값을 얻고 싶다.
+        // const email = $input.attributes.value.value;
+
+        const email = $input.getAttribute('value');
+        console.log(email);
+        console.log($input.getAttribute('id'));
+
+        //value속성의 값을 변경
+        // $input.attributes.value.value = 'bbb444@gmail.com';
+        $input.setAttribute('value','bbb444@gmail.com');
+
+        //input에 새로운 속성 추가
+        $input.setAttribute('title','입력창이다~~');
+
+        //value속성을 제거 
+        $input.removeAttribute('value');
+
+        //value속성이 존재하는지 여부 확인
+        console.log($input.hasAttribute('value'));
+        console.log($input.hasAttribute('title'));
+    </script>
+</body>
+</html>

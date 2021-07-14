@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="fruits"></ul>
+
+    <script>
+        const $fruits = document.getElementById('fruits');
+
+        const fNames = ['Apple', 'Mango', 'Melon', 'Grape'];
+
+
+
+        /*#아래 방법의 문제점:
+        -아래의 방법은 이미 렌더링이 끝난 DOM객체에 
+        반복해서 노드를 추가하므로 메모리상 높은 비용이 
+        발생함.따라서 이미 렌더링이 되어 활성화된 DOM을 
+        변경 조작하는 것은 가능한 횟수를 줄여야 성능에 유리함 
+        */
+        // for (let f of fNames) {
+        //     const $li = document.createElement('li');
+        //     $li.textContent = f;
+        //     $fruits.appendChild($li)
+        // }
+
+
+        //가상의 중간 DOM을 하나 더 생성 위에 방법하고는 성능 차이
+        // const $div = document.createElement('div');
+
+        
+        //DocumentFragment:진정한 버츄얼 돔
+            const $frag = document.createDocumentFragment();
+        for (let f of fNames) {
+            const $li = document.createElement('li');
+            $li.textContent = f;
+            $frag.appendChild($li);
+        }
+        $fruits.appendChild($frag);
+    </script>
+</body>
+
+</html>

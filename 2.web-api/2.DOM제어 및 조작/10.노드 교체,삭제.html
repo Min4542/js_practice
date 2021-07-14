@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="fruits">
+        <li>Apple</li>
+        <li>Banana</li>
+    </ul>
+
+    <script>
+        const $fruits = document.querySelector('#fruits');
+
+        //애플노드를 망고노드로 교체
+        const $mango= $fruits.firstElementChild.cloneNode();
+        $mango.textContent = 'Mango';
+
+        $fruits.replaceChild($mango, $fruits.firstElementChild);
+
+        //바나나를 삭제
+        $fruits.removeChild($fruits.lastElementChild);
+
+    </script>
+
+</body>
+</html>

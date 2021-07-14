@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="fruits">
+        <li>Apple</li>
+        <li>Banana</li>
+        <li>Grape</li>
+    </ul>
+    <script>
+        const $fruits = document.getElementById('fruits');
+
+        const $li = document.createElement('li');
+        $li.textContent = 'Mango';
+
+
+        // $fruits.insertBefore($li,$fruits.lastElementChild);
+
+        // $fruits.insertBefore($li,document.querySelector('#fruits>li:nth-child(2)'));
+
+        $fruits.insertBefore($li, $fruits.firstElementChild.nextElementSibling);
+    </script>
+</body>
+
+</html>
