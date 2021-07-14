@@ -36,10 +36,15 @@
 
     <script>
         //1. 전체 요소의 font-size를 20px로 지정하세요.
+        const $AllElement=document.getElementById('wrap');
+        console.log($AllElement);
+        $AllElement.style.fontSize='20px';
 
         //2. h1요소의 폰트 색상을 red로 지정하세요.
         // document.querySelector('h1').style.color = 'red';
-
+        const $h1Tag=document.getElementsByTagName('h1');
+        console.log($h1Tag);
+                 
         //3. id가 firstTitle인 요소의 폰트 색상을 green으로 지정하세요.       
 
         //4. 클래스가 nextTitle인 요소의 폰트 색상을 blue로 지정하세요.
