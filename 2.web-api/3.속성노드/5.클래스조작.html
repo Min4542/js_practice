@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background: lightgrey;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .red{
+            color: red;
+        }
+        .blue{
+            color: blue;
+        }
+        .circle{
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="box red">안녕</div>
+
+    <button id="change">변경</button>
+
+    <script>
+        
+        const $box = document.querySelector('.box');
+
+        // $box.className = 'blue';너무 번거롭다.별로임
+
+        console.log($box.classList);
+        console.log($box.classList[0]);
+
+        //요소에 클래스 추가
+        $box.classList.add('circle');
+        $box.classList.add('abc','def','ghi');
+
+        //요소에 클래스 제거
+        $box.classList.remove('red');
+        $box.classList.remove('abc','ghi');
+
+        //요소에 특정 클래스 유무확인
+        console.log($box.classList.contains('red'));
+
+        //요소에 특정 클래스를 교체(변경)
+        $box.classList.replace('blue','red');
+
+
+
+        //toggle: 요소에 해당 클래스가 있으면 삭제,없으면 추가
+
+        $box.classList.toggle('circle');
+        $box.classList.toggle('circle');
+
+        const $btn = document.getElementById('change');
+        $btn.onclick = e => {
+            //토글 모를때
+            // if($box.classList.contains('circle')){
+            //     $box.classList.remove('circle');
+            // } else{
+            //     $box.classList.add('circle');
+            // }
+
+            $box.classList.toggle('circle');
+
+        };
+
+    </script>
+
+</body>
+</html>

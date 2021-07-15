@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <button id="btn">클릭하세요!</button>
+
+    <script>
+        const $btn = document.getElementById('btn');
+
+        //이벤트 핸들러 함수 정의
+        const hello = function () {
+            alert('안녕안녕~');
+        };
+
+        $btn.addEventListener('click',hello);
+        $btn.addEventListener('click',function() {
+            $btn.style.background = 'orange';
+        });
+        $btn.addEventListener('click',()=> {
+            $btn.textContent = '클릭 완료!';
+        }); //핸들러를 많이 사용 가능하다.ES6+
+
+        //이벤트 핸들러 제거 
+        $btn.removeEventListener('click',hello);//hello처럼 해야 제거 가능
+
+    </script>
+
+</body>
+
+</html>

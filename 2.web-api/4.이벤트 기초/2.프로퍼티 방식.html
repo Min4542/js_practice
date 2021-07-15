@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <button id="btn">클릭하세요</button>
+    <button id="btn2">클릭하세요2</button>
+
+    <script>
+        function Hellow() {
+            alert('안녕')
+        }
+
+        const $btn = document.getElementById('btn');
+
+        $btn.onclick = Hellow;
+
+        const $btn2 = document.getElementById('btn2');
+
+        // const bye = function() {
+        //     alert('bye');
+        // }
+
+        // $btn2.onclick = bye;
+
+        // $btn2.onclick = function () {
+        //     alert('bye');
+        // };
+
+        $btn2.onclick = () => alert('bye');
+
+        //프로퍼티 방식의 단점: 하나의 이벤트당 하나의 핸들러만 대입할 수 있다. 여러 개의 핸들러를 넣을 수 없다.
+
+        $btn2.onclick = () => {
+            $btn2.style.background = 'tomato';// 이게 안된다.
+        }
+
+        //이벤트 핸들러 제거 
+        $btn.onclick = null;
+        
+
+    </script>
+
+</body>
+
+</html>
