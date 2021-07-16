@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #fruits {
+            display: flex;
+            list-style: none;
+            padding: 0;
+        }
+
+        #fruits li {
+            width: 100px;
+            cursor: pointer;
+        }
+
+        .active {
+            color: red;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <ul id="fruits">
+        <li id="apple" class="active">Apple</li>
+        <li id="banana">Banana</li>
+        <li id="grape">Grape</li>
+    </ul>
+
+    <div>선택된 과일: <em class="msg">Apple</em> </div>
+    
+    <br>
+
+    <label> 
+        #새로운 과일 추가:
+        <input type="text" class="text-box">
+        <button id="add">추가</button>
+    </label>
+
+    <script>
+        const $fruits = document.getElementById('fruits');
+        const $msg = document.querySelector('.msg');
+
+        //이벤트 핸들러 함수
+        function activate(e) {
+
+            for (let $li of [...$fruits.children]) {
+                if ($li.classList.contains('active')) {
+                    $li.classList.remove('active');
+                    break;
+                }
+            }//active걸려 있는거 삭제
+            e.target.classList.add('active');
+            $msg.textContent = e.target.getAttribute('id');
+        }
+
+
+        //li들에게 이벤트를 부여하는 함수
+        function addHandler() {
+            for (let $li of [...$fruits.children]) {
+                $li.addEventListener('click', activate);
+            }
+
+
+        }
+
+        //이벤트 부여 함수
+        addHandler();
+
+        //과일 동적 추가
+        const $addBtn = document.getElementById('add');
+        const $textBox = document.querySelector('.text-box');
+
+        $addBtn.addEventListener('click',e=>{
+            const $li = document.createElement('li');
+            $li.textContent = $textBox.value;
+            $li.setAttribute('id',$li.textContent.toLowerCase());
+
+            $fruits.appendChild($li);
+            $textBox.value = '';
+
+            /*
+             현재 코드는 모든 li들에게 하나하나씩 
+             이벤트 핸들러 activate를 부여하고 있습니다.
+            특히나 동적으로 추가되는 li의 경우 매번 핸들러를 등록하는 행위는 
+            성능저하와 유지보수 부담의 원인이 될 수 있다.
+            */
+            $li.addEventListener('click', activate);
+        });
+    </script>
+
+</body>
+
+</html>
