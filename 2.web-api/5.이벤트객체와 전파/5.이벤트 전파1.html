@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #fruits{
+            padding: 50px;
+            border: 2px solid red;
+        }
+        #fruits>li{
+            background: yellow;
+            margin-bottom: 10px;
+        }
+        #fruits>li:first-child{
+            position: absolute;
+            bottom: 10%;
+            right: 5%;
+        }
+    </style>
+</head>
+<body>
+    
+    <ul id="fruits">
+        <li id="apple">Apple</li>
+        <li id="banana">Banana</li>
+        <li id="grape">Grape</li>
+    </ul>
+
+    <script>
+        const $fruits = document.getElementById('fruits');
+
+        $fruits.addEventListener('click',e=>{
+            console.log('ul태그에서 이벤트 발생!');
+            console.log('이벤트 실제 발생 요소:',e.target);
+            console.log('이벤트 부여된 요소:',e.currentTarget);
+            console.log('이벤트 전파 단계:', e.eventPhase);
+        })
+
+        const $apple = $fruits.firstElementChild;
+
+        $apple.addEventListener('click', e=>{
+            console.log('Apple에서 이벤트가 발생함!!!');
+            console.log('이벤트 실제 발생 요소:',e.target);
+            console.log('이벤트 부여된 요소:',e.currentTarget);
+            console.log('이벤트 전파 단계:', e.eventPhase);
+
+            //이벤트 전파 중지
+            e.stopPropagation();
+        })
+        
+
+    </script>
+
+</body>
+</html>

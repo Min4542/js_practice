@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #fruits {
+            display: flex;
+            list-style: none;
+            padding: 0;
+        }
+
+        #fruits li {
+            width: fit-content;
+            cursor: pointer;
+            background: lightgray;
+            margin-right: 20px;
+        }
+
+        .active {
+            color: red;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <ul id="fruits">
+        <li id="apple" class="active">Apple</li>
+        <li id="banana">Banana</li>
+        <li id="grape">Grape</li>
+    </ul>
+
+    <div>선택된 과일: <em class="msg">Apple</em> </div>
+    
+    <br>
+
+    <label> 
+        #새로운 과일 추가:
+        <input type="text" class="text-box">
+        <button id="add">추가</button>
+    </label>
+
+    <script>
+        const $fruits = document.getElementById('fruits');
+        const $msg = document.querySelector('.msg');
+
+        //이벤트 핸들러 함수
+        function activate(e) {
+
+            //e.target을 제한하는 방법
+            if(!e.target.matches('#fruits>li')){
+                return;
+            }
+
+            for (let $li of [...$fruits.children]) {
+                if ($li.classList.contains('active')) {
+                    $li.classList.remove('active');
+                    break;
+                }
+            }//active걸려 있는거 삭제
+            e.target.classList.add('active');
+            $msg.textContent = e.target.getAttribute('id');
+        }
+
+        //최초 한번만 ul에 activate이벤트를 부여함
+        $fruits.addEventListener('click',activate);
+        
+
+        //과일 동적 추가
+        const $addBtn = document.getElementById('add');
+        const $textBox = document.querySelector('.text-box');
+
+        $addBtn.addEventListener('click',e=>{
+            const $li = document.createElement('li');
+            $li.textContent = $textBox.value;
+            $li.setAttribute('id',$li.textContent.toLowerCase());
+
+            $fruits.appendChild($li);
+            $textBox.value = '';
+
+           
+        });
+    </script>
+
+</body>
+
+</html>

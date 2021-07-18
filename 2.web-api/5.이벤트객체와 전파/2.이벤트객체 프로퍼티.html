@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <input type="checkbox">
+    <em class="msg"></em>
+
+    <script>
+        const $checkbox = document.querySelector('input[type=checkbox]');
+        const $msg = document.querySelector('.msg');
+
+        $checkbox.addEventListener('change',e=>{
+            //실제로 이벤트가 발생한 태그
+            console.log(e.target);
+            console.log(e.target.checked);
+
+            $msg.textContent = e.target.checked ? 'on' : 'off';
+        });
+
+    </script>
+
+</body>
+</html>
