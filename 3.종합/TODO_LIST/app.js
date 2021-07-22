@@ -149,12 +149,20 @@ function removeToDoData($delTarget) {
     console.log(todos);
 }
 
-function renameMod() {
-    const $TodoList = document.querySelector('.todo-list .checkbox');
-    const $InputBox = document.createElement('input');
 
-    $TodoList.replaceChild($InputBox,$TodoList.lastElementChild)
+//일의 내용을 다시 정의한다.
+function renameMod($renameTarget) {
+    const $checkBox = document.querySelector(`.todo-list dataId${$renameTarget.getAttribute('data-id')} .checkbox .text`);
+    const $Input = document.createElement('input');
 
+    
+    $Input.setAttribute('type','text');
+    $Input.setAttribute('id',$renameTarget.getAttribute('data-id'));
+    $Input.setAttribute('value',$renameTarget)
+    console.log($checkBox);
+
+    
+    // $checkBox.replaceChild($Input,);
 
 }
 
@@ -197,9 +205,10 @@ function renameMod() {
     })
     $todoList.addEventListener('click', e => {
         if (!e.target.matches('.modify span')) return;
-
-        //  console.log('수정 버튼 클릭 됨');
-        renameMod(e.target.parentNode);
+        // console.log('출력');
+       
+        // console.log(e.target.parentNode.parentNode);
+        renameMod(e.target.parentNode.parentNode);
     })
 
 })();
