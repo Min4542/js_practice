@@ -149,21 +149,51 @@ function removeToDoData($delTarget) {
     console.log(todos);
 }
 
+//할 일 수정모드 진입 이벤트 처리 함수
+function enterModifyMode($modSpan){
 
-//일의 내용을 다시 정의한다.
-function renameMod($renameTarget) {
-    const $checkBox = document.querySelector(`.todo-list dataId${$renameTarget.getAttribute('data-id')} .checkbox .text`);
-    const $Input = document.createElement('input');
+    //버튼 모양을 교체(클래스 교체)
+    $modSpan.classList.replace('lnr-undo','lnr-checkmark-circle');
+
+    //텍스트 span을 input:text로 교체
+    const $label = $modSpan.parentNode.previousElementSibling;
+    // console.log($parent);
+    const $textSpan =$label.lastElementChild;
+
+    const $modInput = document.createElement('input');
+    $modInput.setAttribute('type','text');
+    $modInput.setAttribute('value',$textSpan.textContent);
+    $modInput.classList.add('modify-input');
+
 
     
-    $Input.setAttribute('type','text');
-    $Input.setAttribute('id',$renameTarget.getAttribute('data-id'));
-    $Input.setAttribute('value',$renameTarget)
-    console.log($checkBox);
+    $label.replaceChild($modInput,$textSpan)
 
-    
-    // $checkBox.replaceChild($Input,);
+}
 
+//할 일 수정 완료 이벤트 처리 함수
+function modifyToDoData($checkSpan){
+
+    //버튼 모양을 원래대로 되돌림
+    $checkSpan.classList.replace('lnr-checkmark-circle','lnr-undo');
+
+    //input:text를 span.text로 교체
+    const $label = $checkSpan.parentNode.previousElementSibling;
+    const $modInput = $label.lastElementChild;
+
+    const $newSpan = document.createElement('span');
+    $newSpan.classList.add('.text');
+    $newSpan.textContent=$modInput.value
+
+
+
+    $label.replaceChild($newSpan,$modInput)
+
+    //배열 데이터 수정
+    const idx= findIndexByDataId(+$label.parentNode.dataset.id);
+    todos[idx].text= $newSpan.textContent;
+
+    console.log(todos);
 }
 
 
@@ -184,6 +214,8 @@ function renameMod($renameTarget) {
     //할 일 완료(체크박스) 이벤트
     const $todoList = document.querySelector('.todo-list');
     $todoList.addEventListener('change', e => {
+
+        if(!e.target.matches('.checkbox input[type=checkbox]'))return;
         // console.log('체크박스 체인지 이벤트 발생!');
 
         // console.log(e.target.nextElementSibling);
@@ -203,12 +235,23 @@ function renameMod($renameTarget) {
 
         removeToDoData(e.target.parentNode.parentNode);
     })
+
+
+
+    //할 일 수정 이벤트 (수정모드진입,수정 완료)
     $todoList.addEventListener('click', e => {
-        if (!e.target.matches('.modify span')) return;
-        // console.log('출력');
-       
-        // console.log(e.target.parentNode.parentNode);
-        renameMod(e.target.parentNode.parentNode);
-    })
+
+        //이벤트 발생 요소가 수정모드진입버튼이라면 
+        if (e.target.matches('.modify span.lnr-undo')) {
+            console.log(e.target);
+            enterModifyMode(e.target);
+
+        }else if(e.target.matches('.modify span.lnr-checkmark-circle')){
+            modifyToDoData(e.target);
+
+        }else{
+
+        }
+    });
 
 })();

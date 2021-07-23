@@ -112,6 +112,23 @@ section.todo-template .content .todo-list .todo-list-item .checkbox .text {
     margin-left: 8px;
 
 }
+section.todo-template .content .todo-list .todo-list-item .checkbox .modify-input{
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    margin-left: 64px;
+    padding: 4px;
+    box-sizing: border-box;
+    font-size: 12px;
+    width: 200px;
+}
+
+section.todo-template .content .todo-list .todo-list-item .checkbox .modify-input:focus{
+    outline: #e20;
+    border: 1px solid #e20;
+}
+
+
+
 
 section.todo-template .content .todo-list .todo-list-item div {
     font-size: 1.5em;
