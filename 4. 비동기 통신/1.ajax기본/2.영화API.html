@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul,
+        li {
+            list-style: none;
+        }
+
+        .movieList {
+            margin: 0 auto;
+            width: 80%;
+            overflow: hidden;
+        }
+
+        .movieList .movie {
+            float: left;
+            width: 33.33333%;
+            height: 300px;
+            position: relative;
+        }
+
+        .movieList .movie img {
+            width: 100px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .inner {
+            padding-left: 100px;
+        }
+
+        .inner .genres li {
+            display: inline-block;
+        }
+
+        .inner .summary {
+            overflow: scroll;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="movieList">
+
+    </div>
+
+    <script>
+        //영화 API 서버 http://yts.mx/api
+        //영화 목록 요청
+        fetch(`https://yts.mx/api/v2/list_movies.json?limit=20&sort_by=rating`)
+            .then(res => res.json())
+            .then(movieList => {
+                console.log(movieList.data.movies);
+                const movies = movieList.data.movies;
+                makeMovieDOM(movies);
+            });
+
+        function makeMovieDOM(movies) {
+            let tag = ''; //태그문자열을 저장할 변수
+            for (let movie of movies) {
+                const {
+                    medium_cover_image,
+                    year,
+                    title,
+                    summary,
+                    genres
+                } = movie;
+
+                tag += `<div class="movie">
+                            <img src="${medium_cover_image}" alt="영화이미지">
+                            <div class="inner">
+                                <div class="title">${title}</div>
+                                <div class="year">${year}년</div>
+                                <ul class="genres">`;
+                for (let genre of genres) {
+                    tag += `<li>${genre}</li>`;
+                }
+                tag += `
+                                </ul>
+                                <p class="summary">${summary}</p>
+                            </div>
+                        </div>
+                `;
+            } //end for
+
+            document.querySelector('.movieList').innerHTML = tag;
+        }
+    </script>
+
+</body>
+
+</html>
