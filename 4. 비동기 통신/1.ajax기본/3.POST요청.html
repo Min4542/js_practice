@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div>
+        #댓글 작성자: <input type="text" name="author">
+        <br>
+        #댓글 내용: <textarea name="content" cols="20" rows="5"></textarea>
+    </div>
+    <br>
+    <button id="reg" type="button">확인</button>
+    <script>
+        const $btn = document.querySelector('#reg');
+
+        $btn.addEventListener('click', e => {
+            //reqInfo객체의 body프로퍼티에는 서버로 전송할 
+            //JSON데이터를 넣어야함
+            const reply = {
+                boardNo : 315, 
+                replyText: document.querySelector('textarea[name=content]').value,
+                replyWriter:document.querySelector('input[name=author]').value
+            };
+
+
+            //GET을 제외한 다른 요청방법들은 요청 정보 객체를 추가로
+            //fetch함수에 전달해야 한다.
+            const reqInfo = {
+                method: 'POST', //요청방식 
+                //서버에 데이터를 보낼 때는 전송 데이터에 따라 
+                //헤더에 정보 설정
+                headers:{
+                    'content-type' : 'application/json'
+                },
+
+                //자바스크립트객체를 JSON으로 변환
+                //JSON.stringify : js -> JSON
+                //JSON.parse     : JSON -> js
+                body:JSON.stringify(reply)
+            };
+
+
+            //비동기 요청함수
+            fetch('http://localhost:8181/api/v1/reply', reqInfo)
+                            .then(res => res.text()).then(msg => {
+                                if(msg === 'insertSuccess'){
+                                    alert('댓글 등록 성공!');
+                                }else{
+                                    alert('댓글 등록 실패!');
+                                }
+                            })
+        })
+    </script>
+</body>
+
+</html>

@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <button id="load-btn">댓글 불러오기</button>
 
@@ -17,28 +19,35 @@
 
     <script>
         const $btn = document.getElementById('load-btn');
-        $btn.addEventListener('click',e =>{
-            //http 비동기 요청을 서버로 보내는법
+        $btn.addEventListener('click', e => {
+            //http 비동기 요청을 서버로 보내는 방법
             /*
-            #fetch API : 자바스크립트에서 제공하는 비동기 통신 함수 
-            -fetch함수가 리턴하는 Promise객체는 단순한 JSON이 아닌 
-            JSON을 포함한 모든 응답정보를 가지고 있습니다.
-            -then()함수를 통해 응답정보를 가지고 있습니다.
+                # fetch API : 자바스크립트에서 제공하는 비동기 통신 함수
+                - fetch함수가 리턴하는 promise객체는 단순한 JSON이 아닌
+                  JSON을 포함한 모든 응답정보를 가지고 있습니다.
+                - then()함수를 통해 응답정보를 콜백으로 이용할 수 있으며
+                  json()메서드를 통해 json데이터를 자바스크립트 객체로
+                  파싱하여 사용할 수 있습니다.
             */
 
+            //응답하면 응답데이터의 json데이터를 넘겨라
             const result = fetch('http://localhost:8181/api/v1/reply/315');
             result.then(res => res.json())
-            .then(articles => {
-                console.log(articles);
-                makeReplyData(articles);
-            });
+                .then(articles => {
+                    console.log(articles);
+                    makeReplyData(articles);
+                });
         });
 
-        //댓글 목로 만드는 함수 
-        function makeReplyData(articles){
+        //댓글 목록 만드는 함수 
+        function makeReplyData(articles) {
             const $ul = document.getElementById('replies')
-            for(repl of articles){
-                const{replyNo , replyText , replyWriter} = repl;
+            for (repl of articles) {
+                const {
+                    replyNo,
+                    replyText,
+                    replyWriter
+                } = repl;
                 const $li = document.createElement('li');
                 $li.textContent = `# 댓글번호: ${replyNo},내용:${replyText},작성자:${replyWriter}`;
 
@@ -47,4 +56,5 @@
         }
     </script>
 </body>
+
 </html>
